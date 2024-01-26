@@ -10,7 +10,6 @@ export default function Home() {
   // TODO: create a function that makes the API call to get all the books
   const getTheTeam = () => {
     getTeam().then(setTeam);
-    console.log(team);
   };
 
   // TODO: make the call to the API to get all the books on component render
