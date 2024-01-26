@@ -1,27 +1,32 @@
-import { Button } from 'react-bootstrap';
-import { signOut } from '../utils/auth';
-import { useAuth } from '../utils/context/authContext';
+import { useState, useEffect } from 'react';
+import { getTeam } from '../api/teamData';
+// import { useAuth } from '../utils/context/authContext';
+import MemberCard from '../components/MemberCard';
 
-function Home() {
-  const { user } = useAuth();
+export default function Home() {
+  const [team, setTeam] = useState([]);
+  // const { user } = useAuth();
+
+  // TODO: create a function that makes the API call to get all the books
+  const getTheTeam = () => {
+    getTeam().then(setTeam);
+  };
+
+  // TODO: make the call to the API to get all the books on component render
+  useEffect(() => {
+    getTheTeam();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
-    <div
-      className="text-center d-flex flex-column justify-content-center align-content-center"
-      style={{
-        height: '90vh',
-        padding: '30px',
-        maxWidth: '400px',
-        margin: '0 auto',
-      }}
-    >
-      <h1>Hello {user.displayName}! </h1>
-      <p>Click the button below to logout!</p>
-      <Button variant="danger" type="button" size="lg" className="copy-btn" onClick={signOut}>
-        Sign Out
-      </Button>
+    <div className="text-center my-4">
+      <div className="d-flex flex-wrap">
+        {/* TODO: map over members here using MemberCard component */}
+        {team.map((member) => (
+          <MemberCard key={member.firebaseKey} memberObj={member} onUpdate={getTheTeam} />
+        ))}
+      </div>
+
     </div>
   );
 }
-
-export default Home;
