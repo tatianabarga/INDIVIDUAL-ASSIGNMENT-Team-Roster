@@ -19,7 +19,7 @@ function MemberCard({ memberObj }) {
       <Card.Img variant="top" src={memberObj.image} alt={memberObj.first_name} style={{ height: '400px' }} />
       <Card.Body>
         <Card.Title>{memberObj.first_name} {memberObj.last_name}</Card.Title>
-        <p>reference: ${memberObj.reference}</p>
+        <p>reference: {memberObj.reference}</p>
         {/* DYNAMIC LINK TO VIEW THE BOOK DETAILS  */}
         <Link href={`/book/${memberObj.firebaseKey}`} passHref>
           <Button variant="primary" className="m-2">VIEW</Button>
