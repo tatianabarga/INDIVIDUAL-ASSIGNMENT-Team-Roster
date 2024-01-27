@@ -53,7 +53,7 @@ function MemberForm({ obj }) {
       <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Team Member</h2>
 
       {/* NAME INPUT  */}
-      <FloatingLabel controlId="floatingInput1" label="Author First Name" className="mb-3">
+      <FloatingLabel controlId="floatingInput1" label="Character First Name" className="mb-3">
         <Form.Control
           as="textarea"
           placeholder="enter name"
